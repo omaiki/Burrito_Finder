@@ -23,6 +23,8 @@ post '/users' do
   @user = User.new(params[:user])
     if @user.save
       session[:id] = @user.id
+      @lat = params[:lat]
+      @lon = params[:lon]
       redirect "/users/profile"
     else
       @errors = @user.error.full_messages

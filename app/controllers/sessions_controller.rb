@@ -5,7 +5,7 @@ end
 post '/sessions' do
   @user = User.find_by_email(params[:email])
   if @user && @user.authenticate(params[:password])
-    sessions[:id] = @user.id
+    session[:id] = @user.id
     redirect "users/profile"
   else
     @errors = ["Invalid information, please try again"]

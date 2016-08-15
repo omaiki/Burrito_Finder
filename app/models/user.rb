@@ -16,5 +16,5 @@ class User < ActiveRecord::Base
     self.password == input_password
   end
 
-  belongs_to :playground
+  has_many :reviews
 end
