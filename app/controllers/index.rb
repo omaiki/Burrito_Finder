@@ -1,5 +1,10 @@
+# get '/' do
+#   erb :location
+# end
+
 get '/' do
-  erb :location
+  @reviews = Review.order(updated_at: :desc).limit(7)
+  erb :index
 end
 
 # post '/go' do
