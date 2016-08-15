@@ -16,6 +16,9 @@ gem 'shotgun'
 
 gem 'bcrypt'
 
+gem 'dotenv-rails'
+gem 'google_places'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
