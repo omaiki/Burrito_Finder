@@ -12,11 +12,11 @@ get '/restaurants/:restaurant_id/reviews/new' do
   @burritos = Burrito.where(restaurant_id: params[:restaurant_id]).order(:name)
   @restaurant = Restaurant.find(params[:restaurant_id])
 
-  if request.xhr?
-    erb :'reviews/_new', layout: false
-  else
+  # if request.xhr?
+  #   erb :'reviews/_new', layout: false
+  # else
     erb :'reviews/new'
-  end
+  # end
 end
 
 # Submit form and create a new review
@@ -25,20 +25,20 @@ post '/restaurants/:restaurant_id/reviews' do
   # @burritos = burrito.where(restaurant_id: params[:restaurant_id])
   @review = Review.new(params[:review])
 
-  if request.xhr?
-    if @review.save
-      erb :'reviews/_show', layout: false
-    else
-      "Error, please try again"
-    end
-  else
+  # if request.xhr?
+    # if @review.save
+    #   erb :'reviews/_show', layout: false
+    # else
+    #   "Error, please try again"
+    # end
+  # else
     if @review.save
       redirect "/restaurants/#{@restaurant.id}"
     else
       @errors = @review.errors.full_messages
       erb :'reviews/new'
     end
-  end
+  # end
 end
 
 # display a specific review belonging to a specific restaurant
