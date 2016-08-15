@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="google-maps">
+    <p>Need help finding <%=@restaurant.name%>?</p>
+      <input id="address" type="textbox" value="<%= @restaurant.address %> <%= @restaurant.city %>, <%= @restaurant.state %> <%= @restaurant.zip %>">
+  <div id="map"></div>
+  </div>
+  <div><%=@restaurant.name%></div>
+  <div><%=@restaurant.address%></div>
+  <div><%=@restaurant.city%></div>
+  <div><%=@restaurant.state%></div>
+  <div><%=@restaurant.zip%></div>
+
+  <br>
+
+  <div class="index-review">
+    <div class="reviewer"><a href="/users/<%=@review.user.id%>"><%= @review.user.username %></a> says:</div>
+    <div class="burrito-name"><a href="/restaurants/<%= @review.restaurant.id %>/burritos/<%= @review.burrito_id%>"><%=@review.burrito.name.capitalize %></a> is worth <%= @review.rating %> stars!</div>
+    <div class="review-body"><%= @review.body %></div>
+    <div class="timestamp"><%= @review.updated_at.month %>/<%= @review.updated_at.day %>/<%= @review.updated_at.year %></div>
+  </div>
+</div>

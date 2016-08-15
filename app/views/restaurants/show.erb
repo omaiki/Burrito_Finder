@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="google-maps">
+      <input id="address" type="hidden" value="<%= @restaurant.address %> <%= @restaurant.city %>, <%= @restaurant.state %> <%= @restaurant.zip %>">
+    <div id="map"></div>
+  </div>
+  <%= @restaurant.name %>: <%= @reviews.count %> reviews<br>
+  <p>Average rating: <%=@reviews.average("rating") %></p><br>
+  <div>
+    <%= @restaurant.address %> <%= @restaurant.city %>, <%= @restaurant.state %> <%= @restaurant.zip %>
+  </div><br>
+  <div>
+    <% if current_user %>
+    <div id="add-burrito"><a href="/restaurants/<%= @restaurant.id %>/burritos/new">Add a burrito</a></div>
+    <div id="add-review"><a href="/restaurants/<%= @restaurant.id %>/reviews/new">Add a review</a></div>
+    <div id="view-burritos"><a href="/restaurants/<%= @restaurant.id %>/burritos">View <%=@restaurant.name%>'s burritos</a></div>
+    <div id="burrito-list"></div>
+    <% else %>
+    <p>Log in to add restaurants, burritos, and reviews!</p>
+    <% end %>
+  </div>
+  <p>Reviews:</p>
+  <div class="review-list">
+    <% @reviews.each do |review| %>
+    <% @restaurant_id = review.restaurant_id %>
+    <% @restaurant_name = Restaurant.find(@restaurant_id).name %>
+    <% @burrito_id = review.burrito_id %>
+    <% @burrito_name = Burrito.find(@burrito_id).name %>
+    <% @user_id = review.user_id %>
+    <% @user_username = User.find(@user_id).username %>
+    <div class="index-review">
+      <div class="reviewer"><a href="/users/<%=@user_id%>"><%= @user_username %></a> says:</div>
+      <div class="burrito-name"><a href="/restaurants/<%= @restaurant_id %>/burritos/<%= @burrito_id%>"><%=@burrito_name.capitalize %></a> is worth <%= review.rating %> stars!</div>
+      <div class="review-body"><%= review.body %></div>
+      <div class="timestamp"><%= review.updated_at.month %>/<%= review.updated_at.day %>/<%= review.updated_at.year %></div>
+    </div>
+    <% end %>
+  </div>
+</div>

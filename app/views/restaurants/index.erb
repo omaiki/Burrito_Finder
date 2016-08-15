@@ -1,0 +1,12 @@
+<div class="container">
+  <% @restaurants.each do |restaurant| %>
+  <ul>
+    <li><a href="/restaurants/<%=restaurant.id%>"><%=restaurant.name%></a> <%=restaurant.address%> <%=restaurant.city%>, <%=restaurant.state%> <%=restaurant.zip%> </li>
+  </ul>
+  <% end %>
+  <% if current_user %>
+  <div id="add-restaurant"><a href="/restaurants/new">Add a new restaurant</a></div>
+  <% else %>
+  <p>Add restaurants, burritos, and reviews!</p>
+  <% end %>
+</div>
