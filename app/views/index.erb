@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Recent Reviews:</h1>
+  <% @reviews.each do |review| %>
+  <% @restaurant_id = review.restaurant_id %>
+  <% @restaurant_name = Restaurant.find(@restaurant_id).name %>
+  <% @burrito_id = review.burrito_id %>
+  <% @burrito_name = Burrito.find(@burrito_id).name %>
+  <% @user_id = review.user_id %>
+  <% @user_username = User.find(@user_id).username %>
+  <div class="index-review">
+    <div class="restaurant-name"><a href="/restaurants/<%=@restaurant_id%>"><%= @restaurant_name %></div></a>
+    <div class="burrito-name"><%=@burrito_name.capitalize %></div>
+    <div class="burrito-rating"> <%= review.rating %> stars</div>
+    <div class="review-body"><%= review.body %></div>
+    <div class="reviewer">by: <a href="/users/<%=@user_id%>"><%= @user_username %></a></div>
+    <div class="timestamp"><%= review.updated_at.month %>/<%= review.updated_at.day %>/<%= review.updated_at.year %></div>
+  </div>
+  <% end %>
+</div>
