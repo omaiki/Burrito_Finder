@@ -1,19 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
+
+  <nav>
+    <ul>
+      <li> <a href="/">Home</a></li>
+      <li> <a href="/restaurants">Restaurants</a></li>
+      <% if current_user %>
+        <li> <a href="/users/<%=current_user.id%>">Profile</a></li>
+        <li> <a href="/logout">Logout</a></li>
+        <% else %>
+        <li> <a href="/users/new">Register</a></li>
+        <li> <a href="/sessions/new">Login</a></li>
+        <% end %>
+    </ul>
+  </nav>
+
+   <style>
+      #map {
+        width: 75%;
+        height: 2000px;
+        background-color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+
+<!-- <div id="googleMap" style="width:500px;height:380px;"></div> -->
+
+<!-- <script src="http://maps.googleapis.com/maps/api/js"></script> -->
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_ACCOUNT_KEY'] %>&callback=initMap">
+    </script>
+
+
+<!-- google places library  -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_ACCOUNT_KEY'] %>&libraries=places">
+
+// google places search function
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_ACCOUNT_KEY'] %>&libraries=places&callback=initAutocomplete"
+         async defer></script>
+
+
+  <!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Places Searchbox</title> -->
+
+<body>
+   <!--  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div id="map"></div> -->
+
+
+ <!--
+  //   normalize.css removes cross-browser differences in defaults, e.g.,
+  //   differences in how form elements appear between Firefox and IE
+  //   See: http://necolas.github.com/normalize.css/
+  // -->
   <link rel="stylesheet" href="/css/normalize.css">
-  <!--
-    application.css is where you put your styles
+   <!--
+  //   application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
 
+
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
+
 
   <title></title>
 </head>

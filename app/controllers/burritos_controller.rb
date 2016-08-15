@@ -5,11 +5,11 @@ get '/restaurants/:restaurant_id/burritos' do
   @reviews = Review.where(restaurant_id: params[:restaurant_id])
   @burritos = Burrito.where(restaurant_id: params[:restaurant_id])
 
-  if request.xhr?
-    erb :'burritos/_index', layout: false
-  else
+  # if request.xhr?
+  #   erb :'burritos/_index', layout: false
+  # else
     erb :'burritos/index'
-  end
+  # end
 end
 
 # returns a form for creating a new burrito belonging to a specific restaurant
@@ -17,11 +17,11 @@ get '/restaurants/:restaurant_id/burritos/new' do
   @reviews = Review.where(restaurant_id: params[:restaurant_id])
   @restaurant = Restaurant.find(params[:restaurant_id])
 
-  if request.xhr?
-    erb :'burritos/_new', layout: false
-  else
+  # if request.xhr?
+  #   erb :'burritos/_new', layout: false
+  # else
     erb :'burritos/new'
-  end
+  # end
 end
 
 # create a new burrito belonging to a specific restaurant
@@ -31,20 +31,20 @@ post '/restaurants/:restaurant_id/burritos' do
   @reviews = Review.where(restaurant_id: params[:restaurant_id])
   @burrito = Burrito.new(params[:burrito])
 
-  if request.xhr?
-    if @burrito.save
-      "burrito saved"
-    else
-      "Error, please try again."
-    end
-  else
+  # if request.xhr?
+  #   if @burrito.save
+  #     "burrito saved"
+  #   else
+  #     "Error, please try again."
+  #   end
+  # else
     if @burrito.save
       redirect "/restaurants/#{@restaurant.id}/burritos/#{@burrito.id}"
     else
       @errors = @burrito.errors.full_messages
       erb :'burritos/new'
     end
-  end
+  # end
 
 end
 
