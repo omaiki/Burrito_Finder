@@ -13,17 +13,17 @@ SHOULD HAVE LOCATION STILL
   <% if current_user && current_user.id == @user.id %>
   <div class="profile-welcome">Welcome back, <%= @user.username %>!</div>
     <% @reviews.each do |review| %>
-      <% @shop_id = review.shop_id %>
-      <% @shop_name = Shop.find(@shop_id).name %>
-      <% @drink_id = review.drink_id %>
-      <% @drink_name = Drink.find(@drink_id).name %>
+      <% @restaurant_id = review.restaurant_id %>
+      <% @restaurant_name = Restaurant.find(@restaurant_id).name %>
+      <% @burrito_id = review.burrito_id %>
+      <% @burrito_name = Burrito.find(@burrito_id).name %>
         <div class="index-review">
-          <div class="shop-name"><a href="/shops/<%=@shop_id%>"><%= @shop_name %></a></div>
-          <div class="drink-name"><%=@drink_name.capitalize %></div>
-          <div class="drink-rating"> <%= review.rating %> stars</div>
+          <div class="restaurant-name"><a href="/restaurants/<%=@restaurant_id%>"><%= @restaurant_name %></a></div>
+          <div class="burrito-name"><%=@burrito_name.capitalize %></div>
+          <div class="burrito-rating"> <%= review.rating %> stars</div>
           <div class="review-body"><%= review.body %></div>
-          <div class="edit-link"><a href="/shops/<%= @shop_id %>/reviews/<%=review.id%>/edit">Edit</a></div>
-  <form id="delete-rev" method="POST" action="/shop/<%= @shop_id %>/reviews/<%=review.id%>">
+          <div class="edit-link"><a href="/restaurants/<%= @restaurant_id %>/reviews/<%=review.id%>/edit">Edit</a></div>
+  <form id="delete-rev" method="POST" action="/restaurant/<%= @restaurant_id %>/reviews/<%=review.id%>">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete Review">
   </form>
@@ -32,14 +32,14 @@ SHOULD HAVE LOCATION STILL
   <% elsif current_user.id != @user.id %>
   <%=@user.username.capitalize%>'s profile
     <% @reviews.each do |review| %>
-      <% @shop_id = review.shop_id %>
-      <% @shop_name = Shop.find(@shop_id).name %>
-      <% @drink_id = review.drink_id %>
-      <% @drink_name = Drink.find(@drink_id).name %>
+      <% @restaurant_id = review.restaurant_id %>
+      <% @restaurant_name = restaurant.find(@restaurant_id).name %>
+      <% @burrito_id = review.burrito_id %>
+      <% @burrito_name = burrito.find(@burrito_id).name %>
         <div class="index-review">
-          <div class="shop-name"><a href="/shops/<%=@shop_id%>"><%= @shop_name %></a></div>
-          <div class="drink-name"><%=@drink_name.capitalize %></div>
-          <div class="drink-rating"> <%= review.rating %> stars</div>
+          <div class="restaurant-name"><a href="/restaurants/<%=@restaurant_id%>"><%= @restaurant_name %></a></div>
+          <div class="burrito-name"><%=@burrito_name.capitalize %></div>
+          <div class="burrito-rating"> <%= review.rating %> stars</div>
           <div class="review-body"><%= review.body %></div>
         </div>
       <% end %>
