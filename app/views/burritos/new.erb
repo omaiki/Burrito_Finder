@@ -1,0 +1,23 @@
+<div class="container">
+  <% if current_user %>
+  <%= @restaurant.name %><br>
+  <%= @restaurant.address %><br>
+  <%= @restaurant.city %>, <%= @restaurant.state %> <%= @restaurant.zip %><br>
+  <%= @reviews.count %> reviews<br>
+
+  <% if @errors %>
+  <%= @errors %>
+  <% end %>
+
+  <form action='/restaurants/<%= @restaurant.id %>/burritos' method='POST'>
+  <input type="hidden" name="burrito[restaurant_id]" value="<%= @restaurant.id %>">
+   <fieldset>
+     <legend>Add a new burrito to <%=@restaurant.name%>!</legend>
+     burrito Name:<input type="text" name="burrito[name]" placeholder="burrito name">
+   </fieldset>
+   <button type="submit">Submit</button>
+ </form>
+ <% else %>
+ <p>You've encountered an error. Please login and try again.</p>
+ <% end %>
+</div>

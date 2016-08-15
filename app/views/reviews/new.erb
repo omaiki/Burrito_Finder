@@ -1,0 +1,39 @@
+<div class="container">
+  <%= @restaurant.name %><br>
+  <%= @restaurant.address %><br>
+  <%= @restaurant.city %>, <%= @restaurant.state %> <%= @restaurant.zip %><br>
+  <%= @reviews.count %> reviews<br>
+  <% if current_user %>
+  <% if @errors %>
+  <%= @errors %>
+  <% end %>
+  <form action='/restaurants/<%= @restaurant.id %>/reviews' method='POST'>
+   <input type="hidden" name="review[user_id]" value="<%= current_user.id %>">
+   <input type="hidden" name="review[restaurant_id]" value="<%= @restaurant.id %>">
+
+  <fieldset>
+  <legend>Add a new review for <%= @restaurant.name %>!</legend>
+   burrito: <select name="review[burrito_id]">
+    <% @burritos.each do |burrito| %>
+    <option value="<%= burrito.id%>"><%= burrito.name %></option>
+    <% end %>
+  </select><br>
+
+  Rating: <select name="reviewb[rating]">
+    <option value="5">5 stars</option>
+    <option value="4">4 stars</option>
+    <option value="3">3 stars</option>
+    <option value="2">2 stars</option>
+    <option value="1">1 stars</option>
+  </select><br>
+  Body: <textarea id="review-box" name="review[body]" placeholder="Review goes here..."></textarea>
+  </fieldset>
+
+  <button type="submit">Submit</button>
+  </form>
+  <p>OR</p>
+  <p><a href="/restaurants/<%= @restaurant.id %>/burritos/new">Add a new burrito</a></p>
+  <% else %>
+<p>You've encountered an error. Please login and try again.</p>
+<% end %>
+</div>
