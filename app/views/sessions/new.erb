@@ -1,8 +1,33 @@
-<div class="container">
+<!-- <div class="container">
  <h1> Login </h1>
  <form action="/sessions" method="POST">
    Username: <input type="text" name="user[username]" placeholder="Username"><br>
    Password: <input type="password" name="user[password]" placeholder="password"><br>
    <input type="submit" value="Login">
  </form>
+</div> -->
+
+
+<div class="container">
+    <div class="flash">
+        <% if flash[:error] %>
+        <%= flash[:error] %>
+        <% end %>
+    </div>
+  <div>
+    <h1>Log in</h1>
+  </div>
+  <div id="login-form">
+    <form action="/sessions" method="post">
+
+      <input type="email" name="user[email]" placeholder="email" required>
+      <br>
+      <input type="password" name="user[password]" placeholder="password" required>
+
+      <input type="submit" value="Go">
+    </form>
+  </div>
+  <div id="site-welcome">
+    <img src="heroku url" alt="my-heroku-link"/>
+  </div>
 </div>
