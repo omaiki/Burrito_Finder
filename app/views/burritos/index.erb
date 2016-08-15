@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>burritos at <%=@restaurant.name%></h1>
+  <a href="/restaurants/<%=@restaurant.id%>/burritos/new">Add a new burrito to <%=@restaurant.name%></a>
+  </form>
+  <% @burritos.each do |burrito| %>
+  <ul>
+    <li><a href="/restaurants/<%=@restaurant.id%>/burritos/<%=burrito.id%>"><%=burrito.name%></a></li>
+  </ul>
+  <% end %>
+</div>

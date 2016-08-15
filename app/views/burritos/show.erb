@@ -1,0 +1,21 @@
+<div class="container">
+  <a href="/restaurants/<%=@restaurant.id%>/burritos/<%=@burrito.id%>/upload">Upload a pic of the <%=@burrito.name%>!</a>
+  <h1><%= @restaurant.name %>'s <%= @burrito.name %> has an average rating of <%=@reviews.average("rating") %> with <%= @reviews.count %> reviews:</h1>
+
+  <% @reviews.each do |review| %>
+  <% @user_id = review.user_id %>
+  <% @user_username = User.find(@user_id).username %>
+  <div class="index-review">
+    <div class="restaurant-name"><%= @restaurant.name %></div>
+    <div class="burrito-name"><%=@burrito.name.capitalize %></div>
+    <div class="burrito-rating"> <%= review.rating %> stars</div>
+    <div class="review-body"><%= review.body %></div>
+    <div class="reviewer">by: <a href="/users/<%=@user_id%>"><%= @user_username %></a></div>
+    <div class="timestamp">on: <%= review.updated_at %></div>
+  </div>
+  <% end %>
+  <div class="links">
+    <a href="/restaurants/<%=@restaurant.id%>/reviews/new">Write a review for <%=@burrito.name%></a><br>
+    <a href="/restaurants/<%=@restaurant.id%>">back to <%=@restaurant.name%></a>
+  </div>
+</div>
