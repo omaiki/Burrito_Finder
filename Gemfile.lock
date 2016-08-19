@@ -127,6 +127,7 @@ DEPENDENCIES
   activesupport (~> 4.2.0)
   bcrypt
   capybara
+  dotenv
   dotenv-rails
   factory_girl
   faker

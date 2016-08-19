@@ -57,3 +57,11 @@ html, body {
       padding: 0;
       }
 
+       #map {
+        width: 50%;
+        height: 50%;
+        background-color: grey;
+      }
+
+
+

@@ -15,7 +15,7 @@ gem 'rake'
 gem 'shotgun'
 
 gem 'bcrypt'
-
+gem 'dotenv'
 gem 'dotenv-rails'
 gem 'google_places'
 
