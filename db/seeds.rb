@@ -1,1 +1,11 @@
 User.create(username: 'bob', email: 'bob@bob.com', password: 'bob')
+User.create(username: 'Oshoke', email: 'oshoke@oshoke.com', password: 'oshoke')
+User.create(username: 'Parth', email: 'parth@parth.com', password: 'parth')
+User.create(username: 'Chester', email: 'chester@chester.com', password: 'chester')
+User.create(username: 'David', email: 'david@david.com', password: 'david')
+User.create(username: 'Hayden', email: 'hayden@hayden.com', password: 'hayden')
+User.create(username: 'Amanda', email: 'amanda@amanda.com', password: 'amanda')
+User.create(username: 'Maria', email: 'maria@maria.com', password: 'maria')
+User.create(username: 'Sarah', email: 'sarah@sarah.com', password: 'sarah')
+User.create(username: 'Danielle', email: 'danielle@danielle.com', password: 'danielle')
+
